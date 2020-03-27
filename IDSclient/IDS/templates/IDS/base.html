@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>IDS</title>
+</head>
+</div>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header__inner">
+                <div class="header__inner-title">
+                    <a href="#">
+                        <div class="header__inner-img"><img src=../../static/logo.png alt=""></div>
+                    </a>
+                    <div class="menu__btn"><span></span></div>
+                    <div class="menu__mobile">
+                        <ul>
+                            <ul>
+                                <a href="#">
+                                    <li>Home</li>
+                                </a>
+                                <a href="#">
+                                    <li>Work</li>
+                                </a>
+                                <a href="#">
+                                    <li>About</li>
+                                </a>
+                                <a href="#">
+                                    <li>Contacts</li>
+                                </a>
+                            </ul>
+                        </ul>
+                    </div>
+                    <a href="#">
+                        <div class="header__inner-text">NAZVANIE</div>
+                    </a>
+                </div>
+                <div class="header__inner-user">
+                    <div class="header__inner-mail">pochta</div>
+                    <div class="login"></div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout'%}?next={{request.path}}">
+                        <div class="login__item">LogOut</div>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login'%}?next={{request.path}}">
+                        <div class="login__item">LogIn</div>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        <div class="menu">
+            <div class="menu__desc">Vse uslugi</div>
+            <div class="menu__images">
+                <div class="menu__img"><a href="#"><img
+                            src="https://pngimage.net/wp-content/uploads/2018/06/img-png.png" alt=""></a></div>
+                <div class="menu__img"><a href="#"><img
+                            src="https://pngimage.net/wp-content/uploads/2018/06/img-png.png" alt=""></a></div>
+                <div class="menu__img"><a href="#"><img
+                            src="https://pngimage.net/wp-content/uploads/2018/06/img-png.png" alt=""></a></div>
+            </div>
+        </div>
+        <div>
+            {% block logs %}{% endblock %}
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script id="update_logs" len_list="{{ len_list }}" src="{% static 'update_logs.js' %}"></script>
+    <script id="slide" src="{% static 'slide.js' %}"></script>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

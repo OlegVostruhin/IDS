@@ -1,0 +1,19 @@
+{% extends 'IDS/base.html' %}
+{% load static %} 
+
+{% block logs %}
+    <div class="content">
+        <div class="content__inner">
+            <div class="graph">
+                <canvas id="log_chart"></canvas>
+            </div>
+            <div class="logs_block">
+                <table>
+                    {% for log in log_list %}
+                         <tr><th>{{ log.id }}</th><th>{{ log.message }}</th></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>   
+{% endblock %}
